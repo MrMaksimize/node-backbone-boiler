@@ -98,7 +98,7 @@ var elasticClient = new elasticsearch.Client({
 // Versioning = anti pattern. Breaking changes should be done by route alteration.
 // @TODO -- verify routing practices are in check with express 4 routing pattern.
 
-require('./server/controllers/opportunity')(server, elasticClient);
+//require('./server/controllers/opportunity')(server, elasticClient);
 
 
 
