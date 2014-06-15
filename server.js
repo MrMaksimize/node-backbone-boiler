@@ -80,7 +80,7 @@ server.options('*', function(req, res) {
 
 // Statics
 // @TODO -- clean me up biatch
-server.use('/', express.static(path.join(__dirname, 'client')));
+server.use('/', express.static(path.join(__dirname, 'client/build')));
 //server.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 /**
