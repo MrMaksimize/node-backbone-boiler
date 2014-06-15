@@ -12,6 +12,7 @@ var bundleLogger = require('../util/bundleLogger');
 var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
+var config       = require('../config');
 
 gulp.task('browserify', function() {
 
@@ -19,9 +20,9 @@ gulp.task('browserify', function() {
 
 	var bundler = bundleMethod({
 		// Specify the entry point of your app
-		entries: ['./client/app/app.js'],
+		entries: [config.src + '/app.js'],
 		// Add file extentions to make optional in your requires
-		extensions: ['.js', '.hbs']
+		extensions: ['.js', '.hbs', '.jade']
 	});
 
 	var bundle = function() {
@@ -38,7 +39,7 @@ gulp.task('browserify', function() {
 			// desired output filename here.
 			.pipe(source('app.js'))
 			// Specify the output destination
-			.pipe(gulp.dest('./client/build/'))
+			.pipe(gulp.dest(config.dest + '/'))
 			// Log when bundling completes!
 			.on('end', bundleLogger.end);
 	};

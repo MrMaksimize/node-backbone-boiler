@@ -6,7 +6,6 @@ var cors = require('cors');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
-var elasticsearch = require('elasticsearch');
 var compress = require('compression');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
@@ -85,20 +84,11 @@ server.use('/', express.static(path.join(__dirname, 'client')));
 //server.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 /**
- *  Boot Elastic Search
- */
-var elasticClient = new elasticsearch.Client({
-  host: 'localhost:9200', // for some reason 9300 causes errors.
-  log: 'trace'
-});
-
-/**
  * Application routes.
  */
 // Versioning = anti pattern. Breaking changes should be done by route alteration.
 // @TODO -- verify routing practices are in check with express 4 routing pattern.
 
-//require('./server/controllers/opportunity')(server, elasticClient);
 
 
 
